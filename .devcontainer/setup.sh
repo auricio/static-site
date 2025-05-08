@@ -1,4 +1,7 @@
 #!/bin/bash
+# Configura sudo sem senha para o usuário 'codespace'
+echo "codespace ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/codespace-nopasswd
+sudo chmod 440 /etc/sudoers.d/codespace-nopasswd
 
 # Instala PostgreSQL Client (para psql)
 sudo apt-get update && sudo apt-get install -y postgresql-client
