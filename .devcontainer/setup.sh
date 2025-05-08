@@ -4,7 +4,8 @@ echo "codespace ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/codespace-nopa
 sudo chmod 440 /etc/sudoers.d/codespace-nopasswd
 
 # Instala PostgreSQL Client (para psql)
-sudo apt update #&& sudo apt-get install -y postgresql-client
+sudo apt update
+sudo apt upgrade -y #&& sudo apt-get install -y postgresql-client
 
 # Configura PostgreSQL
 #sudo -u postgres psql <<-EOSQL
@@ -18,3 +19,14 @@ pip install --upgrade
 python -m venv /home/codespace/.venv
 source /home/codespace/.venv/bin/activate
 pip install django psycopg2-binary
+
+# frontend React
+cd /workspaces/static-site/
+yes | npx create-react-app frontend
+cd frontend && npm start &
+
+# Backend Django
+cd /workspaces/static-site/
+django-admin startproject backend
+cd backend && python manage.py migrate && python manage.py runserver &
+
