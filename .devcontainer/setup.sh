@@ -14,6 +14,7 @@ sudo apt update #&& sudo apt-get install -y postgresql-client
 #EOSQL
 
 # Configura Python (Django)
+pip install --upgrade
 python -m venv /home/codespace/.venv
 source /home/codespace/.venv/bin/activate
 pip install django psycopg2-binary
