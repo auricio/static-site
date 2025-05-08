@@ -3,9 +3,9 @@
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   // Configuração de recursos (Codespaces)
   "hostRequirements": {
-    "cpus": 4,
-    "memory": "12gb",
-    "storage": "50gb"
+    "cpus": 2,
+    "memory": "8gb",
+    "storage": "32gb"
   },
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
