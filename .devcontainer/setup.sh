@@ -4,8 +4,7 @@ echo "codespace ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/codespace-nopa
 sudo chmod 440 /etc/sudoers.d/codespace-nopasswd
 
 # Instala PostgreSQL Client (para psql)
-sudo apt update
-sudo apt upgrade -y #&& sudo apt-get install -y postgresql-client
+sudo apt update #&& sudo apt-get install -y postgresql-client
 
 # Configura PostgreSQL
 #sudo -u postgres psql <<-EOSQL
