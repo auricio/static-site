@@ -15,6 +15,6 @@
   "postCreateCommand": "bash .devcontainer/setup.sh",
   "remoteEnv": {
     "DATABASE_URL": "postgresql://${localEnv:POSTGRES_USER}:${localEnv:POSTGRES_PASSWORD}@localhost:5432/${localEnv:POSTGRES_DB}",
-    "NODE_ENV": "development"
+    "NODE_ENV":"development"
   }
 }
