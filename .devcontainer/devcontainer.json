@@ -2,10 +2,7 @@
   "name": "Full-Stack Dev (Node+Django+PostgreSQL)",
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
-    "ghcr.io/devcontainers/features/postgresql:1": {
-      "version": "14",
-      "startService": true
-    },
+    "ghcr.io/itsmechlark/features/postgresql:1": {},
     "ghcr.io/devcontainers/features/node:1": {
       "version": "18"
     },
