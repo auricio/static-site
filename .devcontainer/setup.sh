@@ -5,6 +5,7 @@ sudo chmod 440 /etc/sudoers.d/codespace-nopasswd
 
 # Instala PostgreSQL Client (para psql)
 sudo apt update #&& sudo apt-get install -y postgresql-client
+sudo apt-get install -y postgresql postgresql-client
 
 # Configura PostgreSQL
 #sudo -u postgres psql <<-EOSQL
