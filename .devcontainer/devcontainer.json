@@ -1,13 +1,13 @@
 {
-  "name": "Full-Stack Dev (Node+Django+PostgreSQL)",
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "name": "Full-Stack Dev (Node+Django+PostgreSQL)"
+  ,"image": "mcr.microsoft.com/devcontainers/universal:2"
   // Configuração de recursos (Codespaces)
-  "hostRequirements": {
+  ,"hostRequirements": {
     "cpus": 2,
     "memory": "8gb",
     "storage": "32gb"
-  },
-  "features": {
+  }
+  ,"features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "18"
     },
@@ -19,7 +19,7 @@
     //,"ghcr.io/robbert229/devcontainer-features/postgresql-client:1": {}
   },
   "forwardPorts": [3000, 8000, 5432],
-  "postCreateCommand": "bash .devcontainer/setup.sh",
+  //"postCreateCommand": "bash .devcontainer/setup.sh",
   "remoteEnv": {
     "DATABASE_URL": "postgresql://${localEnv:POSTGRES_USER}:${localEnv:POSTGRES_PASSWORD}@localhost:5432/${localEnv:POSTGRES_DB}",
     "NODE_ENV":"development"
