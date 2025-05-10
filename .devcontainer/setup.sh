@@ -3,38 +3,17 @@
 echo "codespace ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/codespace-nopasswd
 sudo chmod 440 /etc/sudoers.d/codespace-nopasswd
 
-# Instala PostgreSQL Client (para psql)
-sudo apt update #&& sudo apt-get install -y postgresql-client
-sudo apt-get install -y postgresql postgresql-client
+# Instala PostgreSQL Server e Client
+sudo apt update \
+&& sudo apt install -y --no-install-recommends postgresql postgresql-client \
+&& sudo apt autoremove -y \
+&& sudo apt clean -y \
+&& sudo rm -rf /var/lib/apt/lists/*
 
-# Configura PostgreSQL
-#sudo -u postgres psql <<-EOSQL
-#  CREATE USER ${POSTGRES_USER} WITH PASSWORD '${POSTGRES_PASSWORD}';
-#  CREATE DATABASE ${POSTGRES_DB};
-#  GRANT ALL PRIVILEGES ON DATABASE ${POSTGRES_DB} TO ${POSTGRES_USER};
-#EOSQL
-
-# Configura Python (Django)
-pip install --upgrade
-python -m venv /home/codespace/.venv
-source /home/codespace/.venv/bin/activate
-pip install django psycopg2-binary
-
-# frontend React
-cd /workspaces/static-site/
-yes | npx create-react-app frontend
-cd frontend
-##### && npm start &
-
-# Backend Django
-cd /workspaces/static-site/
-django-admin startproject backend
-cd backend && python manage.py migrate
-##### && python manage.py runserver &
 
 
 # ------------------------------------------------------------
-#    Configuração Manual do PostgreSQL Pós Instalação
+#    Configuração Manual do PostgreSQL Pós-Instalação
 # ------------------------------------------------------------
 #service --status-all
 #sudo nano /etc/postgresql/17/main/pg_hba.conf
@@ -50,3 +29,31 @@ cd backend && python manage.py migrate
 # CREATE DATABASE gpp_homolog;
 # GRANT ALL PRIVILEGES ON DATABASE gpp_homolog TO gpp_user;
 # ------------------------------------------------------------
+
+
+# Configura PostgreSQL
+#sudo -u postgres psql <<-EOSQL
+#  CREATE USER ${POSTGRES_USER} WITH PASSWORD '${POSTGRES_PASSWORD}';
+#  CREATE DATABASE ${POSTGRES_DB};
+#  GRANT ALL PRIVILEGES ON DATABASE ${POSTGRES_DB} TO ${POSTGRES_USER};
+#EOSQL
+
+# Configura Python (Django)
+pip install --upgrade
+python -m venv /home/codespace/.venv
+source /home/codespace/.venv/bin/activate
+pip install django psycopg2-binary
+
+# ------------------
+# Frontend React
+# ------------------
+#cd /workspaces/static-site/
+#yes | npx create-react-app frontend
+#cd frontend && npm start &
+
+# ------------------
+# Backend Django
+# ------------------
+#cd /workspaces/static-site/
+#django-admin startproject backend
+#cd backend && python manage.py migrate && python manage.py runserver &
